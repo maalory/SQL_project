@@ -33,3 +33,17 @@ AND pay.industry_branch_code is not null
 AND pay.value_type_code = 5958
 AND pay.calculation_code = 200
 GROUP BY pay.payroll_year, pay.industry_branch_code, cpib.name;
+
+-- TABULKA 3 DONE...HDP, GINI koeficientem a populací dalších evropských států ve stejném období, jako primární přehled pro ČR.
+-- t_{jmeno}_{prijmeni}_project_SQL_secondary_final
+SELECT
+	e.year,
+	e.country,
+	e.population,
+	e.GDP,
+	e.gini
+FROM economies e
+JOIN countries c
+	on c.country = e.country
+WHERE c.continent = 'Europe'
+and year >= 2000;
