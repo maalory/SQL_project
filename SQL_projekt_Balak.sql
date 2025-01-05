@@ -17,3 +17,5 @@ SELECT
     	cpc.name, 
    		cpc.price_value, 
    		cpc.price_unit;
+   		
+ -- TEST
