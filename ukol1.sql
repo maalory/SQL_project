@@ -1,6 +1,5 @@
 -- UKOL 1: rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
--- TAB 1 DONE ...wage trend + comparison
-WITH wage_trends AS(
+WITH wage_trends AS (
    SELECT
        year,
        industry_name,
@@ -9,8 +8,7 @@ WITH wage_trends AS(
    FROM PrimaryFinal
    WHERE total_gross_wage IS NOT NULL
      AND industry_name IS NOT NULL
-     ),
--- TAB 2 srovnani mezd
+),
 wage_comparison AS (
    SELECT
        industry_name,
@@ -23,5 +21,14 @@ wage_comparison AS (
        END AS wage_decline_flag
    FROM wage_trends
 )
-SELECT *
-FROM wage_comparison;
+SELECT
+   industry_name as odvetvi,
+   COUNT(*) AS pocet_let_v_analyze,
+   SUM(wage_decline_flag) AS pocet_let_s_poklesem,
+   CASE
+       WHEN SUM(wage_decline_flag) > 0 THEN 'Pokles'
+       ELSE 'Růst'
+   END AS trend
+FROM wage_comparison
+GROUP BY industry_name
+ORDER BY pocet_let_s_poklesem DESC ;
