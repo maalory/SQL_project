@@ -31,4 +31,4 @@ SELECT
    END AS trend
 FROM wage_comparison
 GROUP BY industry_name
-ORDER BY pocet_let_s_poklesem DESC ;
+ORDER BY pocet_let_s_poklesem DESC;
