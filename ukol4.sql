@@ -3,9 +3,9 @@ WITH price_growth AS (
 -- TAB 1 DONE ...trend cen potravin - year, name, price, previous year price
    SELECT
        year,
-       category_name,
-       avg_price_value AS avg_price_value_per_year,
-       LAG(avg_price_value) OVER (ORDER BY year) AS prev_avg_price_value
+       -- category_name,
+       AVG(avg_price_value) AS avg_price_value_per_year,
+       LAG(AVG(avg_price_value)) OVER (ORDER BY year) AS prev_avg_price_value
    FROM PrimaryFinal
    WHERE avg_price_value IS NOT NULL
    GROUP BY year),
@@ -32,12 +32,15 @@ WITH price_growth AS (
    WHERE p.prev_avg_price_value IS NOT NULL
      AND w.prev_avg_wage IS NOT NULL
 )
--- prikaz
+-- final order returns highest difference in absolut value
 SELECT
    year,
    price_growth_percent,
    wage_growth_percent,
    growth_difference
 FROM growth_comparison
-WHERE growth_difference > 10
+WHERE ABS(growth_difference) = (
+	SELECT MAX(ABS(growth_difference))
+	FROM growth_comparison
+)
 ORDER BY year;
