@@ -1,15 +1,14 @@
--- UKOL 4 DONE Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
+-- UKOL 4: Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
 WITH price_growth AS (
--- TAB 1 DONE ...trend cen potravin - year, name, price, previous year price
+-- TAB 1 ...food price trend - year, name, price, previous year price
    SELECT
        year,
-       -- category_name,
        AVG(avg_price_value) AS avg_price_value_per_year,
        LAG(AVG(avg_price_value)) OVER (ORDER BY year) AS prev_avg_price_value
    FROM PrimaryFinal
    WHERE avg_price_value IS NOT NULL
    GROUP BY year),
--- TAB 2 ...trend mezd - year, price, previous year price
+-- TAB 2 ...wages trend - year, price, previous year price
   	wage_growth AS (
    SELECT
        year,
@@ -18,7 +17,7 @@ WITH price_growth AS (
    FROM PrimaryFinal
    WHERE total_gross_wage IS NOT NULL
    GROUP BY year),
--- TAB3 srovnani
+-- TAB3 comp
 	growth_comparison AS (
    SELECT
        p.year,

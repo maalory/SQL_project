@@ -1,8 +1,6 @@
--- UKOL 3 DONE Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
-SELECT *
-FROM PrimaryFinal
-limit 5;
--- TAB 1 DONE ...trend cen potravin - year, name, price, previous year price
+-- UKOL 3: Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
+
+-- TAB 1 ...trend cen potravin - year, name, price, previous year price
 with price_growth AS(
 	SELECT
        year,

@@ -25,13 +25,14 @@ CZ_Payroll AS (
        pay.payroll_year AS year,
        pay.industry_branch_code,
        cpib.name AS industry_name,
-       SUM(pay.value) AS total_gross_wage
+       AVG(pay.value) AS total_gross_wage
    FROM czechia_payroll pay
    INNER JOIN czechia_payroll_industry_branch cpib
        ON cpib.code = pay.industry_branch_code
    WHERE pay.value IS NOT NULL
      AND pay.industry_branch_code IS NOT NULL
      AND pay.value_type_code = 5958
+     AND pay.calculation_code = 200
    GROUP BY
        pay.payroll_year,
        pay.industry_branch_code,
