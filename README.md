@@ -55,15 +55,25 @@ Jako podklad byly použity otevrená data z datového portálu data.gov.cz.
 Jednotlivé tabulky byly v první fázi transformovány do jednoho datasetu "PrimaryFinal", se kterým pracuje SQL kód každého úkolu.
 
 czechia_payroll – Informace o mzdách v ruzných odvetvích za nekolikaleté období.
+
 czechia_payroll_calculation – Císelník kalkulací v tabulce mezd.
+
 czechia_payroll_industry_branch – Císelník odvetví v tabulce mezd.
+
 czechia_payroll_unit – Císelník jednotek hodnot v tabulce mezd.
+
 czechia_payroll_value_type – Císelník typu hodnot v tabulce mezd.
+
 czechia_price – Informace o cenách vybraných potravin za nekolikaleté období.
+
 czechia_price_category – Císelník kategorií potravin, které se vyskytují v našem prehledu.
+
 czechia_region – Císelník kraju Ceské republiky dle normy CZ-NUTS 2.
+
 czechia_district – Císelník okresu Ceské republiky dle normy LAU.
+
 countries - Všemožné informace o zemích na svete, napríklad hlavní mesto, mena, národní jídlo nebo prumerná výška populace.
+
 economies - HDP, GINI, danová zátež, atd. pro daný stát a rok.
 
 
